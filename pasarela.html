@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasarela de Pagos en Línea - SAT Lima</title>
+    <link rel="stylesheet" href="css/ReclamosTributarios.css">
+    <link rel="stylesheet" href="css/pasarela.css">
+</head>
+<body>
+    <div class="pasarela-container">
+        <div class="pasarela-header">
+            <h2>Pasarela de Pagos SAT</h2>
+            <p>Complete su pago en línea de forma rápida y segura</p>
+        </div>
+
+        <div class="resumen-cobro">
+            <div><strong>Código de Reclamo:</strong> <span id="resumen-codigo">---</span></div>
+            <div><strong>Total a Pagar:</strong> <span id="resumen-monto" class="monto-destacado">S/ 0.00</span></div>
+        </div>
+
+        <!-- Selección del Medio de Pago -->
+        <div class="metodo-pago-selector">
+            <label class="metodo-option">
+                <input type="radio" name="medio_pago" value="tarjeta" checked id="radio-tarjeta">
+                <span>Tarjeta de Crédito / Débito (RF-33.10)</span>
+            </label>
+            <label class="metodo-option">
+                <input type="radio" name="medio_pago" value="billetera" id="radio-billetera">
+                <span>Billeteras Digitales (Yape / Plin) (RF-33.11)</span>
+            </label>
+        </div>
+
+        <!-- FORMULARIO TARJETA (RF-33.10) -->
+        <form id="form-pago-tarjeta" class="form-metodo active">
+            <div class="form-group">
+                <label>Número de Tarjeta (16 dígitos)</label>
+                <input type="text" id="tarjeta-numero" maxlength="16" placeholder="4557 0000 0000 0000" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Expiración (MM/AA)</label>
+                    <input type="text" id="tarjeta-exp" maxlength="5" placeholder="12/28" required>
+                </div>
+                <div class="form-group">
+                    <label>CVV (3 dígitos)</label>
+                    <input type="password" id="tarjeta-cvv" maxlength="3" placeholder="123" required>
+                </div>
+            </div>
+            <button type="submit" class="btn-pagar">Pagar con Tarjeta</button>
+        </form>
+
+        <!-- FORMULARIO BILLETERA DIGITAL (RF-33.11) -->
+        <form id="form-pago-billetera" class="form-metodo" style="display: none;">
+            <div class="form-group">
+                <label>Seleccionar Billetera</label>
+                <select id="billetera-nombre" class="form-control" required>
+                    <option value="YAPE">Yape</option>
+                    <option value="PLIN">Plin</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Número Celular Registrado (9 dígitos)</label>
+                <input type="text" id="billetera-celular" maxlength="9" placeholder="987654321" required>
+            </div>
+            <button type="submit" class="btn-pagar">Autorizar y Pagar</button>
+        </form>
+
+        <div id="pago-mensaje" class="mensaje-alerta" style="display: none;"></div>
+    </div>
+
+    <script type="module" src="js/pasarela.js"></script>
+</body>
+</html>

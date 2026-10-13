@@ -1,0 +1,51 @@
+/* Estilos específicos para Reclamos Tributarios - SAT Perú */
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Tarjeta principal */
+.card-reclamos {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.card-header-sat {
+    background-color: #003366; /* Azul institucional SAT */
+    color: #ffffff;
+    padding: 1.2rem;
+    font-weight: 600;
+}
+
+/* Cuadro resumen de la tasa a pagar */
+.box-cotizacion {
+    background-color: #eef6ff;
+    border-left: 5px solid #0056b3;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.monto-monto {
+    color: #003366;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+/* Botón principal */
+.btn-sat {
+    background-color: #d9534f;
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 12px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-sat:hover {
+    background-color: #c9302c;
+    color: white;
+}

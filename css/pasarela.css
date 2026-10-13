@@ -1,0 +1,72 @@
+.pasarela-container {
+    max-width: 550px;
+    margin: 3rem auto;
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    font-family: Arial, sans-serif;
+}
+
+.pasarela-header h2 {
+    color: #003366;
+    margin-bottom: 0.2rem;
+}
+
+.resumen-cobro {
+    background-color: #f0f4f8;
+    border-left: 5px solid #003366;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 1.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.monto-destacado {
+    font-size: 1.4rem;
+    color: #28a745;
+    font-weight: bold;
+}
+
+.metodo-pago-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.metodo-option {
+    background: #f8f9fa;
+    padding: 12px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-pagar {
+    width: 100%;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.btn-pagar:hover {
+    background-color: #218838;
+}
+
+.mensaje-alerta {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
