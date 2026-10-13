@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Ventanilla y Caja - SAT Lima</title>
+    <link rel="stylesheet" href="css/cajero.css">
+    <script type="module" src="js/cajero.js"></script>
+</head>
+<body>
+    <div class="cajero-container">
+        <!-- Encabezado del Panel -->
+        <header class="cajero-header">
+            <div class="header-title">
+                <h2>Panel de Ventanilla y Cobro en Caja</h2>
+                <p>Módulo de Atención Presencial del SAT</p>
+            </div>
+            <div class="user-info">
+                <span id="cajero-nombre">Cajero (CAJERO)</span> | 
+                <button id="btn-cerrar-sesion" class="btn-logout">Cerrar Sesión</button>
+            </div>
+        </header>
+
+        <!-- Barra de Búsqueda de Reclamos -->
+        <section class="search-section">
+            <input type="text" id="input-busqueda" placeholder="Buscar por DNI, Código de Reclamo o Nombre...">
+        </section>
+
+        <!-- Tabla de Reclamos Tributarios -->
+       <!-- Tabla de Reclamos Tributarios -->
+<section class="table-section">
+    <h3>Listado General de Reclamos</h3>
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>CÓDIGO</th>
+                    <th>PROPIETARIO</th>
+                    <th>DNI</th>
+                    <th>TIPO IMPUESTO</th>
+                    <th>MOTIVO</th>
+                    <th>MONTO</th>
+                    <th>COMPROBANTE</th>
+                    <th>ESTADO PAGO</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-reclamos-cajero">
+                <tr>
+                    <td colspan="9" class="loading-cell">Cargando registros...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+    </div>
+</body>
+</html>

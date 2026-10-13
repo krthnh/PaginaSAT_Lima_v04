@@ -1,72 +1,209 @@
+/* =========================================================
+   PASARELA DE PAGOS - SAT LIMA (MODERNO Y RESPONSIVO)
+   ========================================================= */
+
+:root {
+    --sat-blue: #003366;
+    --sat-blue-hover: #002244;
+    --sat-green: #28a745;
+    --sat-green-hover: #218838;
+    --sat-bg-light: #f4f7fa;
+    --sat-border: #dcdfe6;
+    --sat-shadow: 0 10px 30px rgba(0, 51, 102, 0.08);
+}
+
+body {
+    background-color: var(--sat-bg-light);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
 .pasarela-container {
-    max-width: 550px;
-    margin: 3rem auto;
+    max-width: 520px;
+    margin: 2.5rem auto;
     background: #ffffff;
     padding: 2.5rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    font-family: Arial, sans-serif;
+    border-radius: 12px;
+    box-shadow: var(--sat-shadow);
+    border: 1px solid #e1e6eb;
+    box-sizing: border-box;
 }
 
-.pasarela-header h2 {
-    color: #003366;
-    margin-bottom: 0.2rem;
-}
-
-.resumen-cobro {
-    background-color: #f0f4f8;
-    border-left: 5px solid #003366;
-    padding: 15px;
-    border-radius: 5px;
-    margin: 1.5rem 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.monto-destacado {
-    font-size: 1.4rem;
-    color: #28a745;
-    font-weight: bold;
-}
-
-.metodo-pago-selector {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.pasarela-header {
+    text-align: center;
     margin-bottom: 1.5rem;
 }
 
-.metodo-option {
-    background: #f8f9fa;
-    padding: 12px 15px;
-    border: 1px solid #ced4da;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
+.pasarela-header h2 {
+    color: var(--sat-blue);
+    font-size: 1.6rem;
+    margin: 0 0 6px 0;
+    font-weight: 700;
 }
 
+.pasarela-header p {
+    color: #6c757d;
+    font-size: 0.92rem;
+    margin: 0;
+}
+
+/* Resumen del Monto a Pagar */
+.resumen-cobro {
+    background-color: #eef5fc;
+    border-left: 5px solid var(--sat-blue);
+    padding: 16px 18px;
+    border-radius: 8px;
+    margin-bottom: 1.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem;
+}
+
+.resumen-cobro strong {
+    color: var(--sat-blue);
+}
+
+.monto-destacado {
+    font-size: 1.45rem;
+    color: var(--sat-green);
+    font-weight: 800;
+}
+
+/* Selector de Medios de Pago */
+.metodo-pago-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 1.8rem;
+}
+
+.metodo-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f8fafc;
+    padding: 14px 16px;
+    border: 2px solid var(--sat-border);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #495057;
+    transition: all 0.2s ease-in-out;
+}
+
+.metodo-option:hover {
+    border-color: var(--sat-blue);
+    background-color: #f0f6ff;
+}
+
+.metodo-option input[type="radio"] {
+    accent-color: var(--sat-blue);
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    cursor: pointer;
+}
+
+/* Estructura y Limpieza de Formularios e Inputs */
+.form-metodo {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+
+.form-group label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #343a40;
+}
+
+.form-group input, 
+.form-group select {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 0.95rem;
+    border: 1px solid var(--sat-border);
+    border-radius: 6px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background-color: #ffffff;
+}
+
+.form-group input:focus, 
+.form-group select:focus {
+    border-color: var(--sat-blue);
+    box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.12);
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+/* Botón Principal de Pago */
 .btn-pagar {
     width: 100%;
-    background-color: #28a745;
-    color: white;
+    background-color: var(--sat-green);
+    color: #ffffff;
     border: none;
-    padding: 12px;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 6px;
+    padding: 14px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    border-radius: 8px;
     cursor: pointer;
-    margin-top: 1rem;
+    margin-top: 10px;
+    transition: background-color 0.2s transform 0.1s;
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.25);
 }
 
 .btn-pagar:hover {
-    background-color: #218838;
+    background-color: var(--sat-green-hover);
 }
 
+.btn-pagar:active {
+    transform: scale(0.99);
+}
+
+/* Mensajes de Estado */
 .mensaje-alerta {
-    margin-top: 15px;
-    padding: 12px;
-    border-radius: 5px;
+    margin-top: 18px;
+    padding: 14px;
+    border-radius: 6px;
     text-align: center;
-    font-weight: bold;
+    font-size: 0.92rem;
+    font-weight: 600;
+}
+
+/* =========================================================
+   ANIMACIONES Y MEJORAS EN PASARELA
+   ========================================================= */
+
+/* Suavizar la selección de métodos de pago (Tarjetas / Yape / Plin) */
+.metodo-pago-item, .card-option {
+    transition: border-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease !important;
+}
+
+.metodo-pago-item:hover, .card-option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Transición al enfocar inputs de tarjeta */
+.form-control:focus, input:focus {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }

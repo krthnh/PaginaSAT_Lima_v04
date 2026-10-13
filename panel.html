@@ -15,6 +15,10 @@
         .badge-registrado { background-color: #ffeeba; color: #856404; }
         .badge-atendido { background-color: #d4edda; color: #155724; }
         .badge-rechazado { background-color: #f8d7da; color: #721c24; }
+        /* Badges de Estado de Pago */
+        .badge-pago { padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 0.85em; display: inline-block; }
+        .badge-pendiente { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+        .badge-pagado { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
         .btn-accion { padding: 6px 10px; margin-right: 5px; cursor: pointer; border: none; border-radius: 3px; }
         .btn-editar { background-color: #ffc107; color: #000; }
         .btn-eliminar { background-color: #dc3545; color: #fff; }
@@ -42,14 +46,16 @@
                     <th>DNI</th>
                     <th>Tipo Impuesto</th>
                     <th>Motivo</th>
-                    <th>Estado</th>
+                    <th>Estado Trámite</th>
+                    <th>Estado Pago</th>
+                    <th>Comprobante</th>
                     <th>Fecha</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody id="tabla-cuerpo">
                 <tr>
-                    <td colspan="8">Cargando registros de la base de datos...</td>
+                    <td colspan="10" style="text-align: center;">Cargando registros de la base de datos...</td>
                 </tr>
             </tbody>
         </table>

@@ -465,3 +465,97 @@ body {
     color: var(--primary-color, #003366);
     border-bottom: 3px solid var(--primary-color, #003366);
 }
+
+/* =========================================================
+   ANIMACIONES Y MEJORAS DE UX (GLOBAL / CONSULTA CIUDADANO)
+   ========================================================= */
+
+/* 1. Animación de entrada suave para filas de tablas */
+@keyframes fadeInRow {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tabla-reclamos tbody tr,
+.tabla-resultados tbody tr,
+#tbody-resultados-consulta tr {
+    animation: fadeInRow 0.35s ease-out forwards;
+}
+
+/* 2. Microinteracciones para botones */
+.btn-primary, .btn-pagar {
+    transition: transform 0.15s ease, box-shadow 0.2s ease, background-color 0.2s ease !important;
+    will-change: transform;
+}
+
+.btn-primary:hover, .btn-pagar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 51, 102, 0.25) !important;
+}
+
+.btn-primary:active, .btn-pagar:active {
+    transform: translateY(0) scale(0.97);
+}
+
+/* 3. Badge Pagado en consulta pública */
+.badge-pagado {
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(40, 167, 69, 0.2);
+}
+
+/* 1. Asegurar contenedor envolvente con Scroll Horizontal si la pantalla es estrecha */
+.tabla-container, 
+div:has(> table) {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* 2. Formato general de la tabla */
+table {
+    width: 100% !important;
+    max-width: 100%;
+    border-collapse: collapse;
+    table-layout: auto; /* O fixed si deseas anchos estrictos */
+    background-color: #ffffff;
+    margin: 0 auto;
+}
+
+/* 3. Ajuste de encabezados y celdas */
+th, td {
+    padding: 12px 10px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 14px;
+    border-bottom: 1px solid #e0e0e0;
+    white-space: nowrap; /* Evita que el texto se rompa de forma extraña */
+}
+
+/* 4. Estilo de los encabezados (SAT Azul) */
+th {
+    background-color: #003366;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* 5. Asegurar padding adecuado en la primera columna (Monto) */
+td:first-child, th:first-child {
+    padding-left: 15px;
+    text-align: left;
+}
+
+/* 6. Espaciado interno para botones de acciones */
+td:last-child {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding-right: 15px;
+}

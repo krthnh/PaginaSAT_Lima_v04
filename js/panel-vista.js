@@ -12,36 +12,51 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Evento cerrar sesión
     document.getElementById('btn-cerrar-sesion').addEventListener('click', cerrarSesion);
 
-    // 2. Cargar tabla de registros
+    // 2. Cargar tabla de registros inicial
     await cargarTabla();
+
+    // 3. RF-33.13: Refresco automático cada 15 segundos para sincronizar pagos
+    setInterval(async () => {
+        await cargarTabla();
+    }, 15000);
 });
 
 async function cargarTabla() {
     const cuerpoTabla = document.getElementById('tabla-cuerpo');
     const reclamos = await obtenerTodosLosReclamos();
 
-    if (reclamos.length === 0) {
-        cuerpoTabla.innerHTML = '<tr><td colspan="8">No hay reclamos registrados en el sistema.</td></tr>';
+    if (!reclamos || reclamos.length === 0) {
+        cuerpoTabla.innerHTML = '<tr><td colspan="10" style="text-align:center;">No hay reclamos registrados en el sistema.</td></tr>';
         return;
     }
 
-    cuerpoTabla.innerHTML = reclamos.map(rec => `
-        <tr>
-            <td><strong>${rec.codigo_seguimiento}</strong></td>
-            <td>${rec.nombre_propietario}</td>
-            <td>${rec.dni}</td>
-            <td>${rec.tipo_impuesto}</td>
-            <td>${rec.motivo}</td>
-            <td><span class="badge badge-${rec.estado}">${rec.estado.toUpperCase()}</span></td>
-            <td>${new Date(rec.fecha_registro).toLocaleDateString()}</td>
-            <td>
-                <button class="btn-accion btn-editar" data-id="${rec.id}" data-motivo="${rec.motivo}" data-estado="${rec.estado}">Estado</button>
-                <button class="btn-accion btn-eliminar" data-id="${rec.id}">Eliminar</button>
-            </td>
-        </tr>
-    `).join('');
+    cuerpoTabla.innerHTML = reclamos.map(rec => {
+        const esPagado = rec.estado_pago === 'Pagado';
+        const badgePagoClass = esPagado ? 'badge-pagado' : 'badge-pendiente';
+        const comprobanteTexto = rec.numero_comprobante 
+            ? `<strong>${rec.numero_comprobante}</strong>` 
+            : '<span style="color:#aaa;">-</span>';
 
-    // Asignar eventos a los botones generados
+        return `
+            <tr>
+                <td><strong>${rec.codigo_seguimiento}</strong></td>
+                <td>${rec.nombre_propietario}</td>
+                <td>${rec.dni}</td>
+                <td>${rec.tipo_impuesto}</td>
+                <td>${rec.motivo}</td>
+                <td><span class="badge badge-${rec.estado.toLowerCase()}">${rec.estado.toUpperCase()}</span></td>
+                <td><span class="badge-pago ${badgePagoClass}">${(rec.estado_pago || 'PENDIENTE').toUpperCase()}</span></td>
+                <td>${comprobanteTexto}</td>
+                <td>${new Date(rec.fecha_registro).toLocaleDateString('es-PE')}</td>
+                <td>
+                    <button class="btn-accion btn-editar" data-id="${rec.id}" data-motivo="${rec.motivo}" data-estado="${rec.estado}">Estado</button>
+                    <button class="btn-accion btn-eliminar" data-id="${rec.id}">Eliminar</button>
+                </td>
+            </tr>
+        `;
+    }).join('');
+
+    // Reasignar eventos a los botones
     document.querySelectorAll('.btn-editar').forEach(btn => {
         btn.addEventListener('click', cambiarEstadoModal);
     });
@@ -51,7 +66,7 @@ async function cargarTabla() {
     });
 }
 
-// Función para cambiar estado/motivo (RF-33.7 / RF-33.8)
+// Función para cambiar estado/motivo
 async function cambiarEstadoModal(e) {
     const id = e.target.dataset.id;
     const estadoActual = e.target.dataset.estado;

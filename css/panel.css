@@ -190,3 +190,42 @@ body {
         padding: 15px;
     }
 }
+
+/* =========================================================
+   ANIMACIONES Y MEJORAS EN PANEL DE EMPLEADOS
+   ========================================================= */
+
+/* Entrada fluida de filas al refrescar cada 15 segundos */
+#tabla-cuerpo tr {
+    animation: fadeInRow 0.3s ease-out forwards;
+}
+
+/* Efectos en botones de acción */
+.btn-accion {
+    transition: transform 0.15s ease, box-shadow 0.2s ease !important;
+}
+
+.btn-editar:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(255, 193, 7, 0.3) !important;
+}
+
+.btn-eliminar:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(220, 53, 69, 0.3) !important;
+}
+
+.btn-accion:active {
+    transform: scale(0.95);
+}
+
+/* Respiración sutil en badge PENDIENTE */
+@keyframes pulseWarning {
+    0% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.4); }
+    70% { box-shadow: 0 0 0 6px rgba(255, 193, 7, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }
+}
+
+.badge-pendiente {
+    animation: pulseWarning 2.5s infinite;
+}

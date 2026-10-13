@@ -1,0 +1,189 @@
+/* =========================================================
+   PANEL DE CAJERO / VENTANILLA - SAT LIMA
+   ========================================================= */
+
+:root {
+    --sat-blue: #003366;
+    --sat-green: #28a745;
+    --sat-green-hover: #218838;
+    --sat-gray-bg: #f4f7fa;
+    --sat-border: #dcdfe6;
+}
+
+body {
+    background-color: var(--sat-gray-bg);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+.cajero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 51, 102, 0.08);
+}
+
+.cajero-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--sat-gray-bg);
+    padding-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.header-title h2 {
+    color: var(--sat-blue);
+    margin: 0 0 4px 0;
+    font-size: 1.6rem;
+}
+
+.header-title p {
+    margin: 0;
+    color: #6c757d;
+    font-size: 0.95rem;
+}
+
+.user-info {
+    font-weight: 600;
+    color: #495057;
+}
+
+.btn-logout {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.btn-logout:hover {
+    background: #5a6268;
+}
+
+/* Búsqueda */
+.search-section {
+    margin-bottom: 1.5rem;
+}
+
+.search-section input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1rem;
+    border: 1px solid var(--sat-border);
+    border-radius: 8px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.search-section input:focus {
+    border-color: var(--sat-blue);
+    box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.12);
+}
+
+/* Estilos de Tabla */
+.table-section h3 {
+    color: var(--sat-blue);
+    margin-bottom: 1rem;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th {
+    background-color: var(--sat-blue);
+    color: white;
+    padding: 12px 10px;
+    font-size: 0.88rem;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+td {
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--sat-border);
+    font-size: 0.92rem;
+}
+
+tr:hover {
+    background-color: #f8fafc;
+}
+
+.loading-cell {
+    text-align: center;
+    padding: 2rem;
+    color: #6c757d;
+}
+
+/* Badges de Estado */
+.badge-pago {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    display: inline-block;
+}
+
+.badge-pendiente {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.badge-pagado {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+/* Botón Cobrar en Caja */
+.btn-cobrar {
+    background-color: var(--sat-green);
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-cobrar:hover {
+    background-color: var(--sat-green-hover);
+}
+
+/* =========================================================
+   ANIMACIONES Y MEJORAS EN PANEL DE CAJERO
+   ========================================================= */
+
+/* Entrada suave de filas al filtrar con el buscador ILIKE */
+#tabla-reclamos-cajero tr {
+    animation: fadeInRow 0.3s ease-out forwards;
+}
+
+/* Botón Cobrar en Caja */
+.btn-cobrar {
+    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+.btn-cobrar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3) !important;
+}
+
+.btn-cobrar:active {
+    transform: translateY(0) scale(0.96);
+}

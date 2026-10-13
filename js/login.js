@@ -41,12 +41,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Redirección adaptada a roles de Neon SQL
                 setTimeout(() => {
-                    if (usuario.rol === 'admin' || usuario.rol === 'empleado') {
-                        window.location.href = 'panel.html';
-                    } else {
-                        window.location.href = 'index.html';
-                    }
-                }, 1000);
+    if (usuario.rol === 'cajero') {
+        window.location.href = 'panelcajero.html';
+    } else if (usuario.rol === 'admin' || usuario.rol === 'empleado') {
+        window.location.href = 'panel.html';
+    } else {
+        window.location.href = 'index.html';
+    }
+}, 1000);
             } else {
                 mostrarMensaje('Correo o contraseña incorrectos', 'error');
             }

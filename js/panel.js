@@ -6,10 +6,12 @@ const usuario = verificarSesion();
 // RF-33.7 / RF-33.8: Consultar registros con filtro por turno para empleados
 export async function obtenerTodosLosReclamos() {
     try {
-        // 1. Si es Administrador, devuelve TODOS los registros
+        // 1. Si es Administrador, devuelve TODOS los registros con estado_pago y numero_comprobante
         if (!usuario || usuario.rol === 'admin') {
             return await sql`
-                SELECT r.id, r.codigo_seguimiento, r.nombre_propietario, r.dni, r.tipo_impuesto, r.motivo, r.estado, r.fecha_registro, u.nombre as registrado_por
+                SELECT r.id, r.codigo_seguimiento, r.nombre_propietario, r.dni, r.tipo_impuesto, 
+                       r.motivo, r.estado, r.estado_pago, r.numero_comprobante, r.fecha_registro, 
+                       u.nombre as registrado_por
                 FROM reclamos_tributarios r
                 LEFT JOIN usuarios u ON r.usuario_id = u.id
                 ORDER BY r.fecha_registro DESC
@@ -23,7 +25,9 @@ export async function obtenerTodosLosReclamos() {
             if (turno === 'madrugada') {
                 // Intervalo: 12:00 AM (00:00) a 08:00 AM (08:00)
                 return await sql`
-                    SELECT r.id, r.codigo_seguimiento, r.nombre_propietario, r.dni, r.tipo_impuesto, r.motivo, r.estado, r.fecha_registro, u.nombre as registrado_por
+                    SELECT r.id, r.codigo_seguimiento, r.nombre_propietario, r.dni, r.tipo_impuesto, 
+                           r.motivo, r.estado, r.estado_pago, r.numero_comprobante, r.fecha_registro, 
+                           u.nombre as registrado_por
                     FROM reclamos_tributarios r
                     LEFT JOIN usuarios u ON r.usuario_id = u.id
                     WHERE EXTRACT(HOUR FROM r.fecha_registro) >= 0 
@@ -33,7 +37,9 @@ export async function obtenerTodosLosReclamos() {
             } else if (turno === 'manana') {
                 // Intervalo: 08:00 AM (08:00) a 04:00 PM (16:00)
                 return await sql`
-                    SELECT r.id, r.codigo_seguimiento, r.nombre_propietario, r.dni, r.tipo_impuesto, r.motivo, r.estado, r.fecha_registro, u.nombre as registrado_por
+                    SELECT r.id, r.codigo_seguimiento, r.nombre_propietario, r.dni, r.tipo_impuesto, 
+                           r.motivo, r.estado, r.estado_pago, r.numero_comprobante, r.fecha_registro, 
+                           u.nombre as registrado_por
                     FROM reclamos_tributarios r
                     LEFT JOIN usuarios u ON r.usuario_id = u.id
                     WHERE EXTRACT(HOUR FROM r.fecha_registro) >= 8 
@@ -43,7 +49,9 @@ export async function obtenerTodosLosReclamos() {
             } else if (turno === 'noche') {
                 // Intervalo: 04:00 PM (16:00) a 12:00 AM (24:00)
                 return await sql`
-                    SELECT r.id, r.codigo_seguimiento, r.nombre_propietario, r.dni, r.tipo_impuesto, r.motivo, r.estado, r.fecha_registro, u.nombre as registrado_por
+                    SELECT r.id, r.codigo_seguimiento, r.nombre_propietario, r.dni, r.tipo_impuesto, 
+                           r.motivo, r.estado, r.estado_pago, r.numero_comprobante, r.fecha_registro, 
+                           u.nombre as registrado_por
                     FROM reclamos_tributarios r
                     LEFT JOIN usuarios u ON r.usuario_id = u.id
                     WHERE EXTRACT(HOUR FROM r.fecha_registro) >= 16 
